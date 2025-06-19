@@ -14,19 +14,27 @@ final class RMCharectorViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         title = "Character"
+        
+        let request = RMRequest(
+            endpoint: .character,
+            queryParamaeters: [
+                URLQueryItem(name: "name", value: "rick"),
+                URLQueryItem(name: "status", value: "alive")
+            ]
+        )
+        print(request.url)
+        
+        
+        RMService.shared.execute(request,
+                                 expecting: RMCharector.self) {result in
+            }
+        
+        
+        
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
